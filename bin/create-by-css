@@ -1,0 +1,7 @@
+#!/usr/bin/env node
+
+const fs = require('fs');
+const [pathToFile, level, tech] = process.argv.slice(2);
+const css = fs.readFileSync(pathToFile, 'utf8');
+
+require('..')(css, level || 'blocks', tech || 'css');
