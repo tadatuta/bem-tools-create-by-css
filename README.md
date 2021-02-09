@@ -1,17 +1,19 @@
-# bem-tools-create-by-css
+# css-to-bem-file-structure
+
+Generate [BEM file structure](https://en.bem.info/methodology/filestructure/) by CSS file.
 
 ## Installation
 
 ```sh
-npm i tadatuta/bem-tools-create-by-css --save-dev
+npm i css-to-bem-file-structure --save-dev
 ```
 
 ## Usage
 
 ```sh
-./node_modules/create-by-css/bin/create-by-css path-to-styles.css
+css-to-bem-file-structure path-to-styles.css
 ```
 
 ```sh
-./node_modules/create-by-css/bin/create-by-css path-to-styles.css folder=blocks tech=css
+css-to-bem-file-structure path-to-styles.css blocks css
 ```
