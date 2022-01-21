@@ -24,8 +24,8 @@
     "url": "git://github.com/tadatuta/bem-tools-create-by-css.git"
   },
   "dependencies": {
-    "bem-tools-create": "^2.2.0",
-    "postcss": "^8.2.5"
+    "bem-tools-create": "^2.3.0",
+    "postcss": "^8.4.5"
   },
   "devDependencies": {
     "rimraf": "^3.0.2"
