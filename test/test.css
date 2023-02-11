@@ -1,5 +1,5 @@
 .b1 { color: red; color: green; }
-/* .b1 { animation-name: test; } */
+.b1 { animation-name: test; }
 .b1.b2 { color: yellowgreen; }
 
 @media (max-width: 1250px) {
@@ -20,13 +20,15 @@
 
 .b2__e1_m1 { color: #eee; }
 
-/* :root {
+/*
+:root {
     --my-var: brown;
 }
 
 .my-block {
     color: var(--my-var);
 }
+*/
 
 @keyframes test {
     from {
@@ -36,4 +38,4 @@
     to {
       transform: translateX(100%);
     }
-} */
+}

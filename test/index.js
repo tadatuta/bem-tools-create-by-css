@@ -9,6 +9,7 @@ const css = fs.readFileSync('test/test.css', 'utf8');
 const expected = {
     'b1/b1.css': [
         '.b1 { color: red; color: green; }',
+        '.b1 { animation-name: test; }',
         '.b1.b2 { color: yellowgreen; }',
         '@media (max-width: 1250px) {',
         '    .b1 { width: 50%; }',

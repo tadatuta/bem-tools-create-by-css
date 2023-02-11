@@ -7,6 +7,10 @@ module.exports = async function(css, level, tech) {
 
     const entities = {};
 
+    ast.walkAtRules('keyframes', atRule => {
+        console.warn(`ATTENTION: unhandled @keyframes ${atRule.params} rule found!`);
+    });
+
     ast.walkRules(rule => {
         const selector = rule.selector;
         if (!selector.startsWith('.')) {
