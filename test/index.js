@@ -1,14 +1,12 @@
 const fs = require('fs');
 const assert = require('assert');
-const rimraf = require('rimraf');
 
 const pathToBlocks = 'test/blocks';
-
-rimraf.sync(`${pathToBlocks}`);
+fs.rmSync(pathToBlocks, { force: true, recursive: true });
 
 const css = fs.readFileSync('test/test.css', 'utf8');
 
-require('..')(css, `${pathToBlocks}`, 'css').then(() => {
+require('..')(css, pathToBlocks, 'css').then(() => {
     // TODO: fixme
     setTimeout(() => {
         const b1 = fs.readFileSync(`${pathToBlocks}/b1/b1.css`, 'utf8');
@@ -22,6 +20,6 @@ require('..')(css, `${pathToBlocks}`, 'css').then(() => {
         const b2__e1_m1 = fs.readFileSync(`${pathToBlocks}/b2/__e1/_m1/b2__e1_m1.css`, 'utf8');
         assert.strictEqual(b2__e1_m1, '.b2__e1_m1 { color: #eee; }');
 
-        rimraf.sync(pathToBlocks);
+        fs.rmSync(pathToBlocks, { force: true, recursive: true });
     }, 500);
 });
