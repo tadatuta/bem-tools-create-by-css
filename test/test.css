@@ -1,6 +1,14 @@
 .b1 { color: red; }
+.b1 { color: green; }
+.b1 { color: blue; }
+.b1.b2 { color: yellowgreen; }
+
+.b1, .b2 { color: pink; }
+
+.b1:hover { color: brown; }
 
 .b1__e1 { color: yellow; }
+.b1__e1::after { content: ""; }
 
 .b1_m1_v1 { color: lightcoral; }
 

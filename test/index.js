@@ -6,19 +6,34 @@ fs.rmSync(pathToBlocks, { force: true, recursive: true });
 
 const css = fs.readFileSync('test/test.css', 'utf8');
 
+const expected = {
+    'b1/b1.css': [
+        '.b1 { color: red; }',
+        '.b1 { color: green; }',
+        '.b1 { color: blue; }',
+        '.b1.b2 { color: yellowgreen; }',
+        '.b1, .b2 { color: pink; }',
+        '.b1:hover { color: brown; }',
+    ].join('\n'),
+    'b1/__e1/b1__e1.css': [
+        '.b1__e1 { color: yellow; }',
+        '.b1__e1::after { content: ""; }',
+    ].join('\n'),
+    'b1/_m1/b1_m1_v1.css': '.b1_m1_v1 { color: lightcoral; }',
+    'b2/b2.css': [
+        '.b1, .b2 { color: pink; }',
+        '.b2 { color: green; }',
+    ].join('\n'),
+    'b2/__e1/_m1/b2__e1_m1.css': '.b2__e1_m1 { color: #eee; }'
+}
+
 require('..')(css, pathToBlocks, 'css').then(() => {
     // TODO: fixme
     setTimeout(() => {
-        const b1 = fs.readFileSync(`${pathToBlocks}/b1/b1.css`, 'utf8');
-        assert.strictEqual(b1, '.b1 { color: red; }');
-        const b1__e1 = fs.readFileSync(`${pathToBlocks}/b1/__e1/b1__e1.css`, 'utf8');
-        assert.strictEqual(b1__e1, '.b1__e1 { color: yellow; }');
-        const b1_m1_v1 = fs.readFileSync(`${pathToBlocks}/b1/_m1/b1_m1_v1.css`, 'utf8');
-        assert.strictEqual(b1_m1_v1, '.b1_m1_v1 { color: lightcoral; }');
-        const b2 = fs.readFileSync(`${pathToBlocks}/b2/b2.css`, 'utf8');
-        assert.strictEqual(b2, '.b2 { color: green; }');
-        const b2__e1_m1 = fs.readFileSync(`${pathToBlocks}/b2/__e1/_m1/b2__e1_m1.css`, 'utf8');
-        assert.strictEqual(b2__e1_m1, '.b2__e1_m1 { color: #eee; }');
+        for ([filePath, reference] of Object.entries(expected)) {
+            const actual = fs.readFileSync(`${pathToBlocks}/${filePath}`, 'utf-8');
+            assert.strictEqual(actual, reference);
+        }
 
         fs.rmSync(pathToBlocks, { force: true, recursive: true });
     }, 500);

@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "bem-tools-create": "^2.3.0",
-    "postcss": "^8.4.21"
+    "postcss": "^8.4.21",
+    "postcss-selector-parser": "^6.0.11"
   }
 }

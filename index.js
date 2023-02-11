@@ -1,22 +1,44 @@
 const postcss = require('postcss');
 const create = require('bem-tools-create');
+const postcssSelectorParser = require('postcss-selector-parser');
 
-module.exports = function(css, level, tech) {
+module.exports = async function(css, level, tech) {
     const ast = postcss.parse(css);
 
-    return new Promise((resolve, reject) => {
-        ast.walkRules(rule => {
-            const selector = rule.selector;
-            if (!selector.startsWith('.') || selector.includes(',')) {
-                resolve();
-                return;
-            };
+    const entities = {};
 
-            const entity = selector.substr(1);
+    ast.walkRules(rule => {
+        const selector = rule.selector;
+        if (!selector.startsWith('.')) {
+            return;
+        };
 
-            create([entity], [level], tech, { fileContent: rule.toString() })
-                .then(resolve)
-                .catch(reject);
+        selector.split(',').forEach(subSelector => {
+            const entity = getEntityBySelector(subSelector);
+
+            if (!entities[entity]) {
+                entities[entity] = [rule.toString()];
+            } else {
+                entities[entity].push(rule.toString());
+            }
         });
     });
+
+    for (const [entity, content] of Object.entries(entities)) {
+        await create([entity], [level], tech, { fileContent: content.join('\n') });
+    }
 };
+
+function getEntityBySelector(selectors) {
+    let result = '';
+
+    postcssSelectorParser(selectors => {
+        selectors.walkClasses(node => {
+            if (!result) {
+                result = node.value;
+            }
+        });
+    }).processSync(selectors);
+
+    return result;
+}
