@@ -2,9 +2,10 @@
 /* .b1 { animation-name: test; } */
 .b1.b2 { color: yellowgreen; }
 
-/* @media (max-width: 1250px) {
+@media (max-width: 1250px) {
     .b1 { width: 50%; }
-} */
+    .b2 { width: 75%; }
+}
 
 .b1, .b2 { color: pink; }
 

@@ -13,12 +13,26 @@ module.exports = async function(css, level, tech) {
             return;
         };
 
+        const parent = rule.parent;
         selector.split(',').forEach(subSelector => {
             const entity = getEntityBySelector(subSelector);
 
             const subRule = rule.clone();
             subRule.selector = subSelector.trim();
-            const css = subRule.toString();
+
+            let css = '';
+            if (parent.type === 'atrule') {
+                css = [
+                    `@${parent.name} ${parent.params} {`,
+                    subRule.toString()
+                        .split('\n')
+                        .map(line => `    ${line}`)
+                        .join('\n'),
+                    '}',
+                ].join('\n');
+            } else {
+                css = subRule.toString();
+            }
 
             if (!entities[entity]) {
                 entities[entity] = [css];

@@ -10,6 +10,9 @@ const expected = {
     'b1/b1.css': [
         '.b1 { color: red; color: green; }',
         '.b1.b2 { color: yellowgreen; }',
+        '@media (max-width: 1250px) {',
+        '    .b1 { width: 50%; }',
+        '}',
         '.b1 { color: pink; }',
         '.b1:hover { color: brown; }',
     ].join('\n'),
@@ -19,6 +22,9 @@ const expected = {
     ].join('\n'),
     'b1/_m1/b1_m1_v1.css': '.b1_m1_v1 { color: lightcoral; }',
     'b2/b2.css': [
+        '@media (max-width: 1250px) {',
+        '    .b2 { width: 75%; }',
+        '}',
         '.b2 { color: pink; }',
         '.b2 { color: green; }',
     ].join('\n'),
