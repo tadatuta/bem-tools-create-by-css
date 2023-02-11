@@ -16,10 +16,14 @@ module.exports = async function(css, level, tech) {
         selector.split(',').forEach(subSelector => {
             const entity = getEntityBySelector(subSelector);
 
+            const subRule = rule.clone();
+            subRule.selector = subSelector.trim();
+            const css = subRule.toString();
+
             if (!entities[entity]) {
-                entities[entity] = [rule.toString()];
+                entities[entity] = [css];
             } else {
-                entities[entity].push(rule.toString());
+                entities[entity].push(css);
             }
         });
     });

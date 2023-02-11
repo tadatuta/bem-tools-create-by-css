@@ -1,7 +1,10 @@
-.b1 { color: red; }
-.b1 { color: green; }
-.b1 { color: blue; }
+.b1 { color: red; color: green; }
+/* .b1 { animation-name: test; } */
 .b1.b2 { color: yellowgreen; }
+
+/* @media (max-width: 1250px) {
+    .b1 { width: 50%; }
+} */
 
 .b1, .b2 { color: pink; }
 
@@ -15,3 +18,21 @@
 .b2 { color: green; }
 
 .b2__e1_m1 { color: #eee; }
+
+/* :root {
+    --my-var: brown;
+}
+
+.my-block {
+    color: var(--my-var);
+}
+
+@keyframes test {
+    from {
+      transform: translateX(0%);
+    }
+
+    to {
+      transform: translateX(100%);
+    }
+} */
