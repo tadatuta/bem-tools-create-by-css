@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "node test"
+    "test": "node test && node classic/test"
   },
   "keywords": [
     "bem",
@@ -12,7 +12,8 @@
     "files"
   ],
   "bin": {
-    "css-to-bem-file-structure": "./bin/create-by-css"
+    "css-to-bem-file-structure": "./bin/create-by-css",
+    "bemify": "./bin/bemify"
   },
   "author": "Vladimir Grinenko <i@tadatuta.com> (https://github.com/tadatuta)",
   "license": "MIT",

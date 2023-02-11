@@ -10,6 +10,19 @@ npm i css-to-bem-file-structure --save-dev
 
 ## Usage
 
+To generate [nested structure](https://en.bem.info/methodology/filestructure/#nested) use
+```sh
+./node_modules/.bin/bemify path-to-styles.css
+```
+
+In this case you may customize separators with environment variables `ELEM_SEPARATOR` and `ELEM_MOD_SEPARATOR`.
+
+## Advanced usage
+
+To customize [file structure organization](https://en.bem.info/methodology/filestructure/) use `css-to-bem-file-structure` binary. It supports the same [bem-config](https://github.com/bem/bem-sdk/tree/master/packages/config#config) file as [bem-tools-create](https://www.npmjs.com/package/bem-tools-create#configuration) package.
+
+NOTE: such configuration was never tested and considered deprecated. List of imports won't be generated in this case.
+
 ```sh
 ./node_modules/.bin/css-to-bem-file-structure path-to-styles.css
 ```

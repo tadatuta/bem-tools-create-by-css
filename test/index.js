@@ -7,7 +7,7 @@ fs.rmSync(pathToBlocks, { force: true, recursive: true });
 
 const css = fs.readFileSync('test/test.css', 'utf8');
 
-require('..')(css, pathToBlocks, 'css').then(() => {
+require('..')(css, { level: pathToBlocks, tech: 'css' }).then(() => {
     // TODO: fixme
     setTimeout(() => {
         for ([filePath, reference] of Object.entries(expected)) {

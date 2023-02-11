@@ -2,7 +2,7 @@ const postcss = require('postcss');
 const create = require('bem-tools-create');
 const getEntityBySelector = require('./lib/entity-by-selector');
 
-module.exports = async function(css, level, tech) {
+module.exports = async function(css, { level, tech }) {
     const ast = postcss.parse(css);
 
     const entities = {};

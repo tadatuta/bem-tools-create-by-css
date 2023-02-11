@@ -4,4 +4,4 @@ const fs = require('fs');
 const [pathToFile, level, tech] = process.argv.slice(2);
 const css = fs.readFileSync(pathToFile, 'utf8');
 
-require('..')(css, { level: level || 'blocks', tech: tech || 'css' });
+require('../classic')(css, { level: level || 'blocks', tech: tech || 'css', buildImports: true });
