@@ -25,9 +25,9 @@
   },
   "dependencies": {
     "bem-tools-create": "^2.3.0",
-    "postcss": "^8.4.5"
+    "postcss": "^8.4.21"
   },
   "devDependencies": {
-    "rimraf": "^3.0.2"
+    "rimraf": "^4.1.2"
   }
 }
