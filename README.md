@@ -11,11 +11,11 @@ npm i css-to-bem-file-structure --save-dev
 ## Usage
 
 ```sh
-css-to-bem-file-structure path-to-styles.css
+./node_modules/.bin/css-to-bem-file-structure path-to-styles.css
 ```
 
 ```sh
-css-to-bem-file-structure path-to-styles.css blocks css
+./node_modules/.bin/css-to-bem-file-structure path-to-styles.css blocks css
 ```
 
 ## How it works
