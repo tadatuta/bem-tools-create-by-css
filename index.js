@@ -1,6 +1,6 @@
 const postcss = require('postcss');
 const create = require('bem-tools-create');
-const postcssSelectorParser = require('postcss-selector-parser');
+const getEntityBySelector = require('./lib/entity-by-selector');
 
 module.exports = async function(css, level, tech) {
     const ast = postcss.parse(css);
@@ -50,17 +50,3 @@ module.exports = async function(css, level, tech) {
         await create([entity], [level], tech, { fileContent: content.join('\n') });
     }
 };
-
-function getEntityBySelector(selectors) {
-    let result = '';
-
-    postcssSelectorParser(selectors => {
-        selectors.walkClasses(node => {
-            if (!result) {
-                result = node.value;
-            }
-        });
-    }).processSync(selectors);
-
-    return result;
-}

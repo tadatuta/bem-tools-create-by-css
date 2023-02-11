@@ -14,7 +14,11 @@
 .b1__e1 { color: yellow; }
 .b1__e1::after { content: ""; }
 
+.b1_m1 { color: honeydew; }
+
 .b1_m1_v1 { color: lightcoral; }
+
+.b1_m1_v2 .b1__e1 { color: hotpink; }
 
 .b2 { color: green; }
 
